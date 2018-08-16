@@ -1,9 +1,9 @@
 # import the necessary packages
 from imutils.video import VideoStream
-from imutlis import face_utils
+from imutils import face_utils
 import datetime
 import argparse
-import imutlis
+import imutils
 import time
 import dlib
 import cv2
@@ -26,7 +26,7 @@ args = vars(ap.parse_args())
 # initialize dlib's face detector (HOG-based) and then create the facial
 # landmark predictor
 print("[INFO] loading facial landmark predictor...")
-detector = cv2.get_frontal_face_detector()
+detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(args["shape_predictor"])
 
 # initialize the video stream and allow the camera sensor to warm-up
@@ -42,7 +42,7 @@ while True:
 	# have a maximum width of 400 pixels, and convert it to
 	# grayscale
 	frame = vs.read()
-	frame = imutils.resize(frame, width = 400)
+	frame = imutils.resize(frame, width = 500)
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
 	# detect faces in the grayscale frame
